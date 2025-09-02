@@ -1,0 +1,242 @@
+/* Promo Strip Container
+.promo-strip {
+  background-color: #fff8e1;
+  border-bottom: 1px solid #f0c14b;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 14px;
+  color: #333;
+  padding: 10px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; 
+  gap: 16px;
+}
+
+Promo Message
+.promo-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 200px;
+}
+
+.promo-text strong {
+  color: #d32f2f;
+}
+
+Location
+.location {
+  flex: 1;
+  min-width: 180px;
+  font-weight: 500;
+}
+
+Cart + Download
+
+.cart-section {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #388e3c;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  white-space: nowrap;
+}
+.cart-icon {
+  font-size: 16px;
+}
+.cart-text,
+.cart-price {
+  font-weight: 500;
+}
+.download-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #388e3c;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  text-decoration: none;
+}
+.download-icon {
+  font-size: 16px;
+}
+.download-text {
+  font-weight: 500;
+}
+.separator {
+  width: 1px;
+  height: 24px;
+  background-color: #ccc;
+}
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 48px;
+  background-color: white;
+  border-bottom: 1px solid #eee;
+  font-family: sans-serif;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #d32f2f;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+}
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+}
+
+.auth-buttons .login-btn {
+  background-color: #d32f2f;
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 14px;
+} */
+
+
+/* Base Reset */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #ffffff;
+  color: #333;
+}
+
+/* Promo Strip */
+.promo-strip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff8e1;
+  padding: 12px 24px;
+  border-bottom: 1px solid #f0c14b;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* Promo Message */
+.promo-content .promo-text {
+  font-size: 14px;
+  color: #333;
+}
+.promo-text strong {
+  color: #d32f2f;
+}
+
+/* Location Section */
+.location {
+  font-size: 14px;
+  color: #1a237e;
+  font-weight: 500;
+}
+.location a {
+  color: #f57c00;
+  text-decoration: none;
+  margin-left: 8px;
+  font-weight: 500;
+}
+
+/* Cart + Download Section */
+.promo-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cart-section {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #388e3c;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+}
+
+.material-icons {
+  font-size: 18px;
+  vertical-align: middle;
+}
+
+/* Separator Line */
+.separator {
+  width: 1px;
+  height: 18px;
+  background-color: #ffffff66;
+}
+
+/* Download Button */
+.download-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #388e3c;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 50%;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 16px 24px;
+  border-bottom: 1px solid #eee;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #1a237e;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.auth-buttons .login-btn {
+  background-color: #1a237e;
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: 20px;
+  font-size: 14px;
+}
