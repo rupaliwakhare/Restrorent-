@@ -2,5 +2,8 @@
 
 *{
    font-family: "Poppins", sans-serif;
-   
+
+}
+.font-playfair{
+  font-family: playfair !important;
 }
