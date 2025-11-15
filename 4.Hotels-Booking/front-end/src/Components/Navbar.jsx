@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { assets } from "../assets/assets";
-
+import { useClerk, useUser, UserButton } from "@clerk/clerk-react";
 
 const Navbar = () => {
   const navLinks = [
@@ -11,15 +11,17 @@ const Navbar = () => {
     { name: "About", path: "/" },
   ];
 
-
   const [isScrolled, setIsScrolled] = React.useState(false);
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+
+  const { openSignIn } = useClerk();
+  const { user } = useUser();
 
   React.useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
-   window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -75,18 +77,33 @@ const Navbar = () => {
             isScrolled && "invert"
           } h-7 transition-all duration-500`}
         />
-        <button
-          className={`px-8 py-2.5 rounded-full ml-4 transition-all duration-500 ${
-            isScrolled ? "text-white bg-black" : "bg-white text-black"
-          }`}
-        >
-          Login
-        </button>
+
+        {User ? (
+          <UserButton>
+            <UserButton.MenuItems>
+              <UserButton.Action/>
+            </UserButton.MenuItems>
+          </UserButton>
+        ) : (
+          <button
+            onClick={openSignIn}
+            className={`px-8 py-2.5 rounded-full ml-4 transition-all duration-500 ${
+              isScrolled ? "text-white bg-black" : "bg-white text-black"
+            }`}
+          >
+            Login
+          </button>
+        )}
       </div>
 
       {/* Mobile Menu Button */}
       <div className="flex items-center gap-3 md:hidden">
-    <img onClick={()=> setIsMenuOpen(!isMenuOpen)} src={assets.menuIcon} alt="" className={`${isScrolled && "invert"} h-4`}/>
+        <img
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          src={assets.menuIcon}
+          alt=""
+          className={`${isScrolled && "invert"} h-4`}
+        />
       </div>
 
       {/* Mobile Menu */}
@@ -99,7 +116,7 @@ const Navbar = () => {
           className="absolute top-4 right-4"
           onClick={() => setIsMenuOpen(false)}
         >
-          <img src={assets.closeIcon} alt="close-menu" className="h-6.5"/>
+          <img src={assets.closeIcon} alt="close-menu" className="h-6.5" />
         </button>
 
         {navLinks.map((link, i) => (
@@ -109,10 +126,13 @@ const Navbar = () => {
         ))}
 
         <button className="border px-4 py-1 text-sm font-light rounded-full cursor-pointer transition-all">
-        Dashboard
+          Dashboard
         </button>
 
-        <button className="bg-black text-white px-8 py-2.5 rounded-full transition-all duration-500">
+        <button
+          onClick={() => openSignIn()}
+          className="bg-black text-white px-8 py-2.5 rounded-full transition-all duration-500"
+        >
           Login
         </button>
       </div>
@@ -120,5 +140,4 @@ const Navbar = () => {
   );
 };
 
-
- export default Navbar;
+export default Navbar;
