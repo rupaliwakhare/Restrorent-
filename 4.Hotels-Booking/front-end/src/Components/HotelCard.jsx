@@ -34,7 +34,7 @@ const HotelCard = ({room,index}) => {
           <img src={assets.locationIcon} alt="location-icon" />{" "}
           <span>{room.hotel.address}</span>
         </div>
-        <div>
+        <div className='flex items-center justify-between mt-4'>
           <p>
             <span className='text-xl text-gray-800'>₹{room.pricePerNight}</span>/night
           </p>
