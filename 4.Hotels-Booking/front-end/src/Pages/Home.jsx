@@ -3,6 +3,7 @@ import Hero from '../Components/Hero.jsx'
 import FeatureDestination from '../Components/FeatureDestination.jsx'
 import ExcusiveOffers from '../Components/ExcusiveOffers.jsx'
 import Testimonial from '../Components/Testimonial.jsx'
+import NewsLetter from '../Components/NewsLetter.jsx'
 
 
 const Home = () => {
@@ -12,6 +13,7 @@ const Home = () => {
    <FeatureDestination />
    <ExcusiveOffers />
    <Testimonial />
+   <NewsLetter />
   </>
       
       
