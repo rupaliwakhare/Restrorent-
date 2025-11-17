@@ -1,10 +1,11 @@
 import React from "react";
 import Title from "./Title";
 import { testimonials } from "../assets/assets";
+import StarRating from "./StarRating";
 
 const Testimonial = () => {
   return (
-    <div className="flex flex-col items-center px-6 md:px-16 md:px16 lg:px-24 bg-slate-50 pt-20 pb-30">
+    <div className="flex flex-col items-center px-6 md:px-16 lg:px-24 bg-slate-50 pt-20 pb-30">
       <Title
         title="What Our Guests Say"
         subTitle="Discover why discrening travelers consistency choose QuickStay for their exclusive and kuxurious accommodations around the world."
@@ -13,7 +14,7 @@ const Testimonial = () => {
         {testimonials.map((Testimonial) => (
           <div
             key={Testimonial.id}
-            className="bg-white p-6 rounded-xl shadow max-xs"
+            className="bg-white p-6 rounded-xl shadow max-w-sm flex-1"
           >
             <div className="flex items-center gap-3">
               <img
@@ -27,11 +28,9 @@ const Testimonial = () => {
               </div>
             </div>
             <div className="flex items-center gap-1 mt-4">
-              {Array(5).fill(0).map((_, index)=>(
-                <star key="index" filled={Testimonial.rating > index}></star>
-              ))}
+              <StarRating />
             </div>
-            <p className="text-gray-500"></p>
+            <p className="text-gray-500 max-w-90 mt-4">{Testimonial.review}</p>
           </div>
         ))}
       </div>
