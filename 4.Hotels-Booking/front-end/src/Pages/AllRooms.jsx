@@ -128,7 +128,7 @@ const AllRooms = () => {
         <div className={`flex items-center justify-between px-5 py-2.5 lg:border-b border-gray-300 ${openFilters && "border-b"}`}>
           <p className="text-base font-medium text-gray-800">FILTERS</p>
           <div className="text-xs cursor-pointer">
-            <span onClick={()=>setOpenFilters(!openFilters)} className="lg:hidden">{openFilters ? 'HIDE' : "SHOW"}HIDE</span>
+            <span onClick={()=>setOpenFilters(!openFilters)} className="lg:hidden">{openFilters ? 'HIDE' : "SHOW"}</span>
             <span className="hidden lg:block">CLEAR</span>
           </div>
         </div>
