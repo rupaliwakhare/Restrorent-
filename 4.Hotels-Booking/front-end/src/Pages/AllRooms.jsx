@@ -3,9 +3,51 @@ import { assets, facilityIcons, roomsDummyData } from "../assets/assets";
 import { useNavigate } from "react-router-dom";
 import StarRating from "../Components/StarRating";
 
+const CheckBox = ({ label, selected = false, onChange = () => {} }) => {
+  return (
+    <label className="flex gap-3 items-center cursor-pointer mt-2 text-sm">
+      <input
+        type="checkbox"
+        checked={selected}
+        onChange={(e) => onChange(e.target.checked, label)}
+      />
+      <span className="font-light select-none">{label}</span>
+    </label>
+  );
+};
+
+const RadioButton = ({label,selected = false, onchange = ()=>{ }})=>{
+return (
+  <label className="flex gap-3 items-center cursor-pointer mt-2 text-sm">
+    <input type="checkbox" checked={selected} onchange=
+    {(e)=>onchange(e.target.checked, label)}/>
+    <span className="font-light select-none">{label}</span>
+  </label>
+)
+}
+
 const AllRooms = () => {
   const navigate = useNavigate();
   const [openFilters, setOpenFilters] = useState(false)
+  
+  
+  const roomTypes=[
+    "Single Bed",
+    "Double Bed",
+    "Luxury Room",
+    "Family Suite",
+  ] ;
+  const priceRanges = [
+    '0 to 500',
+    '500 to 1000',
+    '1000 to 2000',
+    '2000 to 3000'
+  ];
+  const sortOptions = [
+    "Price Low to High",
+    "Price High to Low",
+    "Newest First"
+  ]
 
   return (
     <div className="flex flex-col-reverse lg:flex-row items-start justify-between pt-28 md:pt-35 px-4 md:px-16 lg:px-24">
@@ -89,6 +131,12 @@ const AllRooms = () => {
             <span onClick={()=>setOpenFilters(!openFilters)} className="lg:hidden">{openFilters ? 'HIDE' : "SHOW"}HIDE</span>
             <span className="hidden lg:block">CLEAR</span>
           </div>
+        </div>
+        <div className={`${openFilters ? 'h-auto' : 'h-0 lg:h-auto'} overflow-hidden transition-all duration-700`}>
+          <div className="px-5 pt-5">
+            <p className="font-medium text-gray-800 pb-2"> Popular filters</p>
+          </div>
+
         </div>
       </div>
     </div>
