@@ -64,6 +64,8 @@ const AllRooms = () => {
                     <p className="text-xs">{item}</p>
                   </div>
                 ))}
+                {/* Room Price per Night */}
+                <p className="text-xl font-medium text-gray-700">${room.pricePerNight}/night</p>
               </div>
             </div>
           </div>
@@ -71,7 +73,14 @@ const AllRooms = () => {
       </div>
 
       {/* Filters Section */}
-      <div className="lg:w-1/3">{}</div>
+      <div className="bg-white w-80 border-gray-300 text-gray-600 max-lg:mb-8 min-lg:mt-16">
+        <div>
+          <p> FILTERS</p>
+          <div>
+            <span>CLEAR</span>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
