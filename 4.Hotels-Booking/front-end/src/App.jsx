@@ -5,6 +5,8 @@ import Home from "./Pages/Home.jsx";
 import { Route, Routes, useLocation } from "react-router-dom";
 import Footer from "./Components/Footer.jsx";
 import AllRooms from "./Pages/AllRooms.jsx";
+import RoomDetails from "./Pages/RoomDetails.jsx"
+
 
 const App = () => {
   const isOwnerPath = useLocation().pathname.includes("owner");
@@ -15,7 +17,8 @@ const App = () => {
       <div className="min-h-[70vh">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/rooms" element={<AllRooms/>} />
+          <Route path="/rooms" element={<AllRooms />} />
+          <Route path="/rooms/:id" element={<RoomDetails />} />
         </Routes>
       </div>
       <Footer />
