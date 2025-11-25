@@ -36,7 +36,7 @@ const RoomDetails = () => {
     <div>
         <img className='w-full rounded-xl shadow-lg object-cover' src={mainImage} alt="Room Image" />
     </div>
-    <div>
+    <div className=''>
         {room?.images.length > 1 && room.images.map((image,index)=>(
             <img onClick={()=> setMainImage(image)}
              key={index} src={image} alt="Image"
