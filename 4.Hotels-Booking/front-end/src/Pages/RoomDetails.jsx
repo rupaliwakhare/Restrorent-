@@ -139,8 +139,8 @@ const RoomDetails = () => {
           <button
             type="submit"
             className="bg-blue-500 hover:bg-blue-600 active:scale-95 transition-all 
-             text-white rounded-md max-md:w-full max-md:mt-6 md:w-48 px-8 py-3 
-             md:py-4 text-base cursor-pointer"
+             text-white rounded-md w-full md:w-48 px-4 py-2 md:py-3 
+             text-sm md:text-base cursor-pointer"
           >
             Check Availability
           </button>
@@ -191,7 +191,7 @@ const RoomDetails = () => {
           </div>
           <button
             className="bg-blue-500 hover:bg-blue-600 active:scale-95 transition-all 
-             text-white rounded-md max-md: max-md:mt-6 md:w-32 px-4 pt-1.5 pb-1.5
+             text-white rounded-md max-md: max-md:mt-6 md:w-48 px-4 pt-1.5 pb-1.5
              md:py-3 text-base cursor-pointer"
           >
             Contact Now
