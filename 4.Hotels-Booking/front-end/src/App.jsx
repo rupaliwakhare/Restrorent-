@@ -8,6 +8,7 @@ import AllRooms from "./Pages/AllRooms.jsx";
 import RoomDetails from "./Pages/RoomDetails.jsx"
 import MyBookings from "./Pages/MyBookings.jsx";
 import HotelReg from "./Components/HotelReg.jsx";
+import Layout from "./Pages/hotelOwner/Layout.jsx";
 
 
 const App = () => {
@@ -16,13 +17,16 @@ const App = () => {
   return (
     <div>
       {!isOwnerPath && <Navbar />}
-     { !false && <HotelReg />}
+     { false && <HotelReg />}
       <div className="min-h-[70vh">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/rooms" element={<AllRooms />} />
           <Route path="/rooms/:id" element={<RoomDetails />} />
           <Route path="/my-bookings" element={<MyBookings />} />
+          <Route path="/owner" element={<Layout/>}>
+
+          </Route>
         </Routes>
       </div>
       <Footer />
