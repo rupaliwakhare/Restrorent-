@@ -14,7 +14,7 @@ app.use (cors()) //Enable Cors-Origin Resource Sharing
 
 // Middleware
 app.use(express.json())
-app.use(clerkMiddleware)
+// app.use(clerkMiddleware)
 
 // API to listen to Clerk Webhooks
 app.use("/api/clerk", clerkWebhooks);
@@ -26,3 +26,4 @@ const PORT = process.env.PORT || 3000;
 
 
 app.listen(PORT,()=>console.log(`Server is running on http://localhost:${PORT}`))
+
