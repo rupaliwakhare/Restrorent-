@@ -19,15 +19,16 @@ const addFood = async (req, res) => {
       description: req.body.description,
       price: req.body.price,
       category: req.body.category,
-      image: image_filename
+      image: req.file.path
     });
 
    
       await food.save();
-      res.status(201).json({ success: true, message: "Food Added" });
+      res.status(201).json({ success: true, message: "Food Added" ,food});
     } catch (error) {
       console.log(error);
-      res.status(500).json({ success: false, message: "Error" });
+      res.status(500).json({ success: false, message: error.message });
+
     }
   
 };
