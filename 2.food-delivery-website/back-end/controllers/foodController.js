@@ -1,6 +1,7 @@
 // import { log } from "console";
 import foodModel from "../models/food_model.js";
 import fs from "fs";
+import path from "path"
 
 // add food item
 const addFood = async (req, res) => {
@@ -12,51 +13,62 @@ const addFood = async (req, res) => {
       });
     }
 
-    // let image_filename = `${req.file.filename}`;
+    let image_filename = `${req.file.filename}`;
 
     const food = new foodModel({
       name: req.body.name,
       description: req.body.description,
       price: req.body.price,
       category: req.body.category,
-      image: req.file.path
+      image: req.file.path,
     });
 
-   
-      await food.save();
-      res.status(201).json({ success: true, message: "Food Added" ,food});
-    } catch (error) {
-      console.log(error);
-      res.status(500).json({ success: false, message: error.message });
-
-    }
-  
+    await food.save();
+    res.status(201).json({ success: true, message: "Food Added", food });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false, message: error.message });
+  }
 };
 
-// all food list 
-const listFood = async(req,res)=>{
+// all food list
+const listFood = async (req, res) => {
   try {
     const foods = await foodModel.find({});
-    res.json({success:true,data:foods})
+    res.json({ success: true, data: foods });
   } catch (error) {
     console.log(error);
-    res.json({success:false,message:"Error"})
+    res.json({ success: false, message: "Error" });
   }
-}
+};
 // remove food item
 
-const removeFood = async(req,res)=>{
+const removeFood = async (req, res) => {
   try {
-    const {id} = req.params;
-    const food = await foodModel.findById(id)
-  fs.unlink(`uploads/${food.image}`,()=>{})
-  await foodModel.findByIdAndDelete(req.body.id)
-  res.json({success:true,message:"Food Removed"})
+    const id = req.params.id;
+    const food = await foodModel.findById(id);
+
+    if (!food) {
+      return res
+        .status(404)
+        .json({ success: false, message: "Food not Found" });
+    }
+   
+
+     const imagePath = path.join(food.image);
+     if (fs.existsSync(imagePath)) {
+       fs.unlink(imagePath, (err) => {
+         if (err) console.log("Image deletion error:", err);
+       });
+     }
+
+    // Delete food item
+    await foodModel.findByIdAndDelete(id);
+
+    res.json({ success: true, message: "Food Removed" });
   } catch (error) {
     console.log(error);
-    res.json({success:false,message:"Error"})
-    
+    res.json({ success: false, message: "Error" });
   }
-
-}
-export { addFood,listFood,removeFood };
+};
+export { addFood, listFood, removeFood };
