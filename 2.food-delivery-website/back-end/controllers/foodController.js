@@ -20,7 +20,7 @@ const addFood = async (req, res) => {
       description: req.body.description,
       price: req.body.price,
       category: req.body.category,
-      image: req.file.path,
+      image: image_filename,
     });
 
     await food.save();
