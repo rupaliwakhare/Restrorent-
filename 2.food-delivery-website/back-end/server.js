@@ -2,7 +2,12 @@ import express from 'express'
 import cors from 'cors'
 import { connectDB } from './config/db.js'
 import foodRouter from './routes/foodroute.js';
+import userRouter from './routes/userroute.js';
+import dotenv from "dotenv";
 
+
+
+dotenv.config();
 
 
 // app config
@@ -21,6 +26,7 @@ connectDB();
 // api endpoint
 app.use("/api/food",foodRouter);
 app.use("/images",express.static("uploads"))
+app.use("/api/user",userRouter)
 
 
 
