@@ -19,10 +19,10 @@ const loginUser = async(req,res)=>{
 
         const isMatch = await bcrypt.compare(password,user.password)
         if (!isMatch) {
-            return res.json({sucess:false,message:"Invalid credentials"})
+            return res.json({success:false,message:"Invalid credentials"})
         }
             const token = createToken(user._id)
-            res.json({sucess:true,token})
+            res.json({success:true,token})
 
     } catch (error) {
         console.log(error);
@@ -43,7 +43,7 @@ const createToken = (id)=>{
 const registerUser = async(req,res)=>{
     const {name,password,email} = req.body;
     try {
-        // shceking is user already exixts
+        // checking is user already exixts
     const exists = await userModel.findOne({email})
     if(exists){
         return res.json({success:false,message:"USer already exists!"})
@@ -73,7 +73,7 @@ const registerUser = async(req,res)=>{
 
     } catch (error) {
         console.log(error);
-        res.json({sucess:false,message:"Error"})
+        res.json({success:false,message:"Error"})
         
     }
 }
