@@ -1,7 +1,7 @@
 // context/StoreContext.js
-// import axios from "axios";
-import { food_list } from "../assets/frontend_assets/assets";
 
+// import { food_list } from "../assets/frontend_assets/assets";
+import axios from "axios";
 import { createContext,useEffect,useState } from "react";
 
 export const StoreContext = createContext(null);
@@ -9,9 +9,10 @@ export const StoreContext = createContext(null);
 const StoreContextProvider = (props) => {
   
   const [cartItems, setCartItems] = useState({});
-  const [token, setToken] = useState("");
-
   const url = "http://localhost:4000";
+  const [token, setToken] = useState("");
+  const [foodList,setFoodList] = useState([])
+
   
   const addToCart = (itemId) => {
     setCartItems((prev) => ({
@@ -36,23 +37,42 @@ const StoreContextProvider = (props) => {
     let totalAmount = 0;
     for (const item in cartItems) {
       if (cartItems[item] > 0) {
-        let itemInfo = food_list.find((product) => product._id === item);
+        let itemInfo = foodList.find((product) => product._id === item);
         totalAmount += itemInfo.price * cartItems[item];
       }
     }
     return totalAmount;
   };
 
-useEffect(() => {
-  const savedToken = localStorage.getItem("token");
-  if (savedToken) {
-    setToken(savedToken);
+  // Fecth foodlist
+  const fetchFoodList = async ()=>{
+   try {
+     const response = await axios.get(url + "/api/food/list");
+     setFoodList(response.data.data || response.data);
+     console.log(response.data.data || response.data);
+     
+   } catch (error) {
+    console.log("Error fetching food list:", error);
+    
+   }
   }
+
+useEffect(() => {
+ 
+
+  async function loadData(){
+    await fetchFoodList();
+     const savedToken = localStorage.getItem("token");
+     if (savedToken) {
+       setToken(savedToken);
+     }
+  }
+  loadData()
 }, []);
 
 
   const contextValue = {
-    food_list,
+    food_list:foodList,
     cartItems,
     setCartItems,
     addToCart,
