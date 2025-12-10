@@ -56,7 +56,7 @@ const removeFood = async (req, res) => {
     }
    
 
-     const imagePath = path.join(food.image);
+     const imagePath = path.join("uploads",food.image);
      if (fs.existsSync(imagePath)) {
        fs.unlink(imagePath, (err) => {
          if (err) console.log("Image deletion error:", err);
@@ -65,7 +65,6 @@ const removeFood = async (req, res) => {
 
     // Delete food item
     await foodModel.findByIdAndDelete(id);
-
     res.json({ success: true, message: "Food Removed" });
   } catch (error) {
     console.log(error);
@@ -85,7 +84,7 @@ const updateFood = async (req, res) => {
 
     //  insert a new image
     if (req.file) {
-      const oldImagePath = food.image;
+      const oldImagePath = path.join("uploads", food.image);
       if (fs.existsSync(oldImagePath)) {
         fs.unlink(oldImagePath, (err) => {
           if (err) console.log("Old image deletion error:", err);
