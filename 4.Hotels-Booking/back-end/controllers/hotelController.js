@@ -1,4 +1,3 @@
-import { Message } from "svix/dist/api/message.js";
 import Hotel from "../models/Hotel.js";
 import User from "../models/User.js";
 
@@ -8,7 +7,7 @@ export const resisterHotel = async(req,res)=>{
         const {name, address, contact,city} = req.body
         const owner = req.user._id
 
-        // Checked user alredy resistered
+        // Checked user already resistered
 
         const hotel = await Hotel.findOne({owner})
         if(hotel){
@@ -17,8 +16,8 @@ export const resisterHotel = async(req,res)=>{
               Message: "Hotel Already resistered",
             });
         }
+        
         await Hotel.create({name,address,contact,city,owner});
-        await User.findByIdAndUpdate(owner, {role: "hotelOwner"});
         await User.findByIdAndUpdate(owner, {role: "hotelOwner"});
 
         res.json({success: true, Message: "Hotel Registered Successfully"})

@@ -9,6 +9,8 @@ import hotelRouter from "./routes/hotelRoutes.js";
 
 
 connectDB()
+coonectCloudinary()
+
 
 const app= express()
 app.use (cors()) //Enable Cors-Origin Resource Sharing 

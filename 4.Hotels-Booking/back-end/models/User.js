@@ -24,10 +24,10 @@ const userSchema = new mongoose.Schema(
     email: { type: String, required: true },
     image: { type: String, required: true },
     role: { type: String, enum: ["user", "hotelOwner"], default: "user" },
-    recentSearchedCities: { type: String, default: "" }, // ✅ default value, not required
+    recentSearchedCities: { type: String, default: "" }, 
   },
   { timestamps: true }
-); // ✅ correct option
+); 
 
 const User = mongoose.model("User", userSchema);
 
